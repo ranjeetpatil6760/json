@@ -8,9 +8,10 @@
 
 import UIKit
 import Alamofire
-class RegistrationViewController: UIViewController,UITextFieldDelegate {
+class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     @IBOutlet weak var myview: UIView!
+    @IBOutlet weak var mycoverbutton: UIButton!
     @IBOutlet weak var firstname: UITextField!
     @IBOutlet weak var lastname: UITextField!
     @IBOutlet weak var mobile: UITextField!
@@ -24,28 +25,25 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate {
     
     
     
-    
     let url_string = "http://kolhapurtourism.co.in/ClassifiedApp/registration.php"
    
     let imageviewcontroller = UIImagePickerController()
     
     @IBAction func signup(_ sender: UIButton) {
        
-        
+         textfiled_validation()
 
-            
         
 //         let Parameters_code:Parameters = [ "fname":firstname.text!,
 //                                        "lname":lastname.text!,
 //                                        "email":email.text!,
 //                                        "pass":password.text!,
 //                                        "mobile":mobile.text!,
-//                                        "rdate":"10-5-555",
-//                                        "img":myimageview.image!,
-//                                        "filename":"Filename"
-//                                        
-//                            
-//                                                            ]
+//                                    //   "rdate":"10-5-555",
+//                                      //  "img":myimageview.image!,
+//                                       // "filename":"Filename"
+//            
+//                                                                                        ]
 //        
 //        
 //        Alamofire.request(url_string, method: .post, parameters: Parameters_code).responseJSON
@@ -65,12 +63,89 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate {
 //                    print(mess!)
 //                }
 //        }
-//        
-//        
         
     
+    
+    }
+    
+    
+    func textfiled_validation(){
+        
+        if (self.firstname.text == "" && self.lastname.text == "" && self.mobile.text == "" && self.password.text == "" && self.email.text == "" && myimageview.image == nil)  {
+        
+            
+            let controller = UIAlertController(title: "Registration", message: "All fields are empty", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            
+            controller.addAction(action)
+            self.present(controller, animated: true, completion: nil)
+            
+            
+            print("all fields are empty")
+            
+        }else if self.firstname.text == "" {
+            
+            let controller = UIAlertController(title: "First name", message: "First name field is empty", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            
+            controller.addAction(action)
+            self.present(controller, animated: true, completion: nil)
+            
+            
+        }else if self.lastname.text == ""{
+            
+            
+            let controller = UIAlertController(title: "Last name", message: "Last name field is empty", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            
+            controller.addAction(action)
+            self.present(controller, animated: true, completion: nil)
+            
+        }else if self.email.text == ""{
+            
+            let controller = UIAlertController(title: "E-Mail", message: "Email field is empty", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            
+            controller.addAction(action)
+            self.present(controller, animated: true, completion: nil)
+            
+            
+        }else if self.password.text == ""{
+            
+            
+            let controller = UIAlertController(title: "Password", message: "Password field is empty", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            
+            controller.addAction(action)
+            self.present(controller, animated: true, completion: nil)
+            
+        }else if self.mobile.text == ""{
+            
+            
+            let controller = UIAlertController(title: "Mobile", message: "Mobile number is empty", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            
+            controller.addAction(action)
+            self.present(controller, animated: true, completion: nil)
+            
+            
+        }else if self.myimageview.image == nil{
+            
+            
+            
+            let controller = UIAlertController(title: "Image Error", message: "Please select image", preferredStyle: UIAlertControllerStyle.alert)
+            let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+            
+            controller.addAction(action)
+            self.present(controller, animated: true, completion: nil)
+            
+            
+            
+            
+            
         }
     
+    }
     
     @IBAction func cancel(_ sender: UIButton) {
         
@@ -95,34 +170,37 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate {
         
         let Gallery = UIAlertAction(title: "Gallery", style: UIAlertActionStyle.default) { (action) in
             
-            self.imageviewcontroller.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary){
+            
+            
+            self.imageviewcontroller.delegate = self
             self.imageviewcontroller.allowsEditing = true
             self.imageviewcontroller.sourceType = .photoLibrary
             self.present(self.imageviewcontroller, animated: true, completion: nil)
             
-            
-        }
-        
-  
+            }
+            }
+           
     
         let camera = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default) { (action ) in
+     
             
-            if self.imageviewcontroller.sourceType == UIImagePickerControllerSourceType.camera{
-            
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera){
                 
-            self.imageviewcontroller.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            self.imageviewcontroller.delegate = self
             self.imageviewcontroller.allowsEditing = true
             self.imageviewcontroller.sourceType = .camera
             self.present(self.imageviewcontroller, animated: true, completion: nil)
-            }else {
+            }
+        
+                else {
                 
                 print("source not available")
-                let a = UIAlertController(title: "Camera", message: "No Source Available", preferredStyle: UIAlertControllerStyle.alert)
+                let a = UIAlertController(title: "Camera", message: "Camera Not Working", preferredStyle: UIAlertControllerStyle.alert)
                 let d = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-                let can = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+               
                 
                 a.addAction(d)
-                a.addAction(can)
                 
                 self.present(a, animated: true, completion: nil)
         
@@ -132,9 +210,7 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate {
         
         let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         
-        
-        
-       
+            
         controller.addAction(Gallery)
         controller.addAction(camera)
         controller.addAction(cancel)
@@ -259,7 +335,7 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate {
        
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        let scroll:CGPoint = CGPoint(x: 0, y: textField.frame.origin.y)
+        let scroll:CGPoint = CGPoint(x: 0, y: textField.frame.origin.y - 110)
         self.myscrollview.setContentOffset(scroll, animated: true)
         
     }
@@ -277,7 +353,7 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate {
 
 
 
-extension RegistrationViewController:UIImagePickerControllerDelegate{
+extension RegistrationViewController{
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -287,14 +363,24 @@ extension RegistrationViewController:UIImagePickerControllerDelegate{
         myimageview.image = chosenImage
         myimageview.contentMode = .scaleAspectFill
         
+        self.mycoverbutton.imageView?.isHidden = true
         
         mysmallimageview.image = chosenImage
         mysmallimageview.contentMode = .scaleAspectFill
+        
+        mysmallimageview.layer.cornerRadius = 25
+        mysmallimageview.clipsToBounds = true
+        mysmallimageview.layer.masksToBounds = true
+        mysmallimageview.layer.borderWidth = 0.90
+        mysmallimageview.layer.borderColor = UIColor.white.cgColor
         
         dismiss(animated:true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.mycoverbutton.imageView?.isHidden = true
+
+        
         dismiss(animated: true, completion: nil)
     }
     

@@ -14,6 +14,26 @@ class ViewController2: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        
+        
+        let date = Date()
+       
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "dd.MM.yyyy"
+        
+        let result = formatter.string(from: date)
+    
+        
+        
+        
+        
+    print(result)
+    print(result)
+    
+    
     }
 
     override func didReceiveMemoryWarning() {

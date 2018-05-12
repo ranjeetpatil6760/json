@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1314" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AIt-Gx-IDT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1314" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6az-ua-Y8Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -103,7 +103,6 @@
                                             <outlet property="mydescription" destination="dlO-YE-0tt" id="hRX-vL-sHn"/>
                                             <outlet property="myimageview" destination="nfg-uU-ys1" id="FZU-iX-xRv"/>
                                             <outlet property="mytitle" destination="pZv-bb-I0c" id="GnF-TY-q32"/>
-                                            <segue destination="dBx-kz-xkX" kind="show" id="fjD-P7-rEB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -162,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N17-UA-M4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1026" y="-799"/>
+            <point key="canvasLocation" x="-695" y="-824"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="N7z-J5-DgC">
@@ -375,7 +374,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="6az-ua-Y8Z" id="P86-V0-k4f"/>
                                                 </connections>
@@ -461,20 +460,21 @@
                                             <constraint firstAttribute="trailing" secondItem="cQE-4o-Lu6" secondAttribute="trailing" constant="15" id="wvz-NY-Ewh"/>
                                         </constraints>
                                     </view>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add_camera.png" translatesAutoresizingMaskIntoConstraints="NO" id="lPl-RX-CXt">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lPl-RX-CXt">
                                         <rect key="frame" x="137" y="38" width="100" height="100"/>
-                                        <color key="backgroundColor" red="0.75331138959390864" green="0.75331138959390864" blue="0.75331138959390864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="MIf-Ss-c5u"/>
                                             <constraint firstAttribute="height" constant="100" id="yhh-xM-LjD"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKi-ov-Pt3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKi-ov-Pt3">
                                         <rect key="frame" x="137" y="38" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="cIu-ep-c1D"/>
                                             <constraint firstAttribute="height" constant="100" id="j0p-ci-qdg"/>
                                         </constraints>
+                                        <state key="normal" image="add_camera.png"/>
                                         <connections>
                                             <action selector="camera_btn:" destination="6az-ua-Y8Z" eventType="touchUpInside" id="twG-fi-hDT"/>
                                         </connections>
@@ -507,6 +507,7 @@
                         <outlet property="firstname" destination="prZ-fQ-Dek" id="0Yi-gS-EBK"/>
                         <outlet property="lastname" destination="JqV-4r-l2I" id="weg-Zo-e4r"/>
                         <outlet property="mobile" destination="cQE-4o-Lu6" id="i66-ey-7ZO"/>
+                        <outlet property="mycoverbutton" destination="JKi-ov-Pt3" id="h61-uc-NKe"/>
                         <outlet property="myimageview" destination="lPl-RX-CXt" id="IPL-cx-elY"/>
                         <outlet property="myscrollview" destination="fxz-BT-rX9" id="X52-5g-Zy6"/>
                         <outlet property="mysmallimageview" destination="pcy-JI-bgw" id="smc-k3-5Cq"/>
@@ -517,7 +518,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHg-cs-lvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1079" y="-125"/>
+            <point key="canvasLocation" x="-1034" y="-125"/>
         </scene>
         <!--Item-->
         <scene sceneID="Sk3-D5-Ibf">
