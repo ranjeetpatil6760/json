@@ -10,10 +10,9 @@
 		1E673295EC27D0BE3F7DEEE1 /* Pods_JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 394AD68EA7582E09EEC03BCF /* Pods_JSON.framework */; };
 		2128C09820A43F580029F080 /* icons8-user-account-filled-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 2128C09720A43F580029F080 /* icons8-user-account-filled-100.png */; };
 		2128C09A20A43F6E0029F080 /* add_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 2128C09920A43F6E0029F080 /* add_camera.png */; };
-		212F0D33209C76B100F4A022 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212F0D32209C76B100F4A022 /* Alamofire.framework */; };
-		212F0D34209C76B100F4A022 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 212F0D32209C76B100F4A022 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		212F0D36209C76B100F4A022 /* Pods_JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212F0D35209C76B100F4A022 /* Pods_JSON.framework */; };
-		212F0D37209C76B100F4A022 /* Pods_JSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 212F0D35209C76B100F4A022 /* Pods_JSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		214BEA9E20A96B6900E22404 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214BEA9D20A96B6900E22404 /* CollectionViewCell.swift */; };
+		214BEAA020A990D100E22404 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 214BEA9F20A990D100E22404 /* 2.jpg */; };
+		214BEAA220A9931A00E22404 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 214BEAA120A9931A00E22404 /* 3.jpg */; };
 		2152593320A2FA9200E523A0 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152593220A2FA9200E523A0 /* RegistrationViewController.swift */; };
 		2156B693209B20EB00FBCA0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156B692209B20EB00FBCA0B /* AppDelegate.swift */; };
 		2156B695209B20EB00FBCA0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2156B694209B20EB00FBCA0B /* ViewController.swift */; };
@@ -58,8 +57,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				212F0D37209C76B100F4A022 /* Pods_JSON.framework in Embed Frameworks */,
-				212F0D34209C76B100F4A022 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,8 +67,9 @@
 		1717A77E015BC18255825216 /* Pods-JSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSON.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSON/Pods-JSON.release.xcconfig"; sourceTree = "<group>"; };
 		2128C09720A43F580029F080 /* icons8-user-account-filled-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-user-account-filled-100.png"; sourceTree = "<group>"; };
 		2128C09920A43F6E0029F080 /* add_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_camera.png; sourceTree = "<group>"; };
-		212F0D32209C76B100F4A022 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		212F0D35209C76B100F4A022 /* Pods_JSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_JSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		214BEA9D20A96B6900E22404 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		214BEA9F20A990D100E22404 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		214BEAA120A9931A00E22404 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		2152593220A2FA9200E523A0 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		2156B68F209B20EA00FBCA0B /* JSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2156B692209B20EB00FBCA0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,9 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				212F0D36209C76B100F4A022 /* Pods_JSON.framework in Frameworks */,
 				1E673295EC27D0BE3F7DEEE1 /* Pods_JSON.framework in Frameworks */,
-				212F0D33209C76B100F4A022 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,8 +146,6 @@
 		2156B686209B20EA00FBCA0B = {
 			isa = PBXGroup;
 			children = (
-				212F0D35209C76B100F4A022 /* Pods_JSON.framework */,
-				212F0D32209C76B100F4A022 /* Alamofire.framework */,
 				2156B691209B20EB00FBCA0B /* JSON */,
 				2156B6A6209B20ED00FBCA0B /* JSONTests */,
 				2156B6B1209B20ED00FBCA0B /* JSONUITests */,
@@ -207,6 +201,7 @@
 		215F05A620A15CA300F345EB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				214BEA9D20A96B6900E22404 /* CollectionViewCell.swift */,
 				2167090420A02BFC001F64E8 /* TableViewCell.swift */,
 			);
 			name = Cells;
@@ -228,6 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				2128C09720A43F580029F080 /* icons8-user-account-filled-100.png */,
+				214BEAA120A9931A00E22404 /* 3.jpg */,
+				214BEA9F20A990D100E22404 /* 2.jpg */,
 				21C8254420A2B3C600B3ACAF /* Spotlist.png */,
 				2128C09920A43F6E0029F080 /* add_camera.png */,
 				215F05A920A160F300F345EB /* icons8-registration-filled-25.png */,
@@ -356,8 +353,10 @@
 				2167092220A05B26001F64E8 /* Home_25.png in Resources */,
 				2128C09820A43F580029F080 /* icons8-user-account-filled-100.png in Resources */,
 				2167091620A04EDF001F64E8 /* images.jpeg in Resources */,
+				214BEAA220A9931A00E22404 /* 3.jpg in Resources */,
 				215F05AA20A160F300F345EB /* icons8-registration-filled-25.png in Resources */,
 				2128C09A20A43F6E0029F080 /* add_camera.png in Resources */,
+				214BEAA020A990D100E22404 /* 2.jpg in Resources */,
 				2167091E20A058D4001F64E8 /* Camera_25.png in Resources */,
 				2167091420A04C20001F64E8 /* 1.jpg in Resources */,
 				2156B69A209B20EC00FBCA0B /* Assets.xcassets in Resources */,
@@ -428,6 +427,7 @@
 			files = (
 				2167090520A02BFD001F64E8 /* TableViewCell.swift in Sources */,
 				2167090720A045D7001F64E8 /* ViewController2.swift in Sources */,
+				214BEA9E20A96B6900E22404 /* CollectionViewCell.swift in Sources */,
 				2156B695209B20EB00FBCA0B /* ViewController.swift in Sources */,
 				2156B693209B20EB00FBCA0B /* AppDelegate.swift in Sources */,
 				2152593320A2FA9200E523A0 /* RegistrationViewController.swift in Sources */,

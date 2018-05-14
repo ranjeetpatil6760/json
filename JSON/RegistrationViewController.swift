@@ -33,40 +33,126 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
        
          textfiled_validation()
 
+        let dateformatter = DateFormatter()
         
-//         let Parameters_code:Parameters = [ "fname":firstname.text!,
-//                                        "lname":lastname.text!,
-//                                        "email":email.text!,
-//                                        "pass":password.text!,
-//                                        "mobile":mobile.text!,
-//                                    //   "rdate":"10-5-555",
-//                                      //  "img":myimageview.image!,
-//                                       // "filename":"Filename"
-//            
-//                                                                                        ]
-//        
-//        
-//        Alamofire.request(url_string, method: .post, parameters: Parameters_code).responseJSON
-//            {
-//                response in
-//                //printing response
-//                print(response)
-//                
-//                //getting the json value from the server
-//                if let result = response.result.value {
-//                    
-//                    //converting it as NSDictionary
-//                    let jsonData = result as! NSDictionary
-//                    
-//                    //displaying the message in label
-//                    let mess = jsonData.value(forKey: "message") as! String?
-//                    print(mess!)
-//                }
-//        }
+        dateformatter.dateStyle = DateFormatter.Style.short
         
-    
-    
+        dateformatter.timeStyle = DateFormatter.Style.short
+        
+        let now = dateformatter.string(from: NSDate() as Date)
+
+        
+         let Parameters_code:Parameters = [ "fname":firstname.text!,
+                                        "lname":lastname.text!,
+                                        "email":email.text!,
+                                        "pass":password.text!,
+                                        "mobile":mobile.text!,
+                                     "rdate":now ]
+            
+        
+        
+        func myImageUploadRequest()
+        {
+            
+            let myUrl = NSURL(string: "http://kolhapurtourism.co.in/ClassifiedApp/registration.php");
+            
+            let request = NSMutableURLRequest(url:myUrl! as URL) as NSMutableURLRequest
+            
+            request.httpMethod = "POST";
+            
+            
+            
+            let para = [
+                "fname"  : "mac mini",
+                "lname"    : "apple",
+                "email":"nishu3535@gmail.com",
+                "pass":"5544778",
+                "mobile":"9766360186",
+                "rdate":"14-5-2018",]
+            
+            let boundary = generateBoundaryString()
+            
+            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            
+            let imagesctrl = UIImage(named: "3.jpg")
+            let imageData = UIImageJPEGRepresentation(imagesctrl!, 1)
+            
+            if(imageData==nil)  { return }
+            
+            //        request.HTTPBody = createBodyWithParameters(parameters: para, filePathKey: "file", imageDataKey: imageData! as NSData, boundary: boundary)
+            
+            request.httpBody = createBodyWithParameters(parameters: para, filePathKey: "File", imageDataKey: imageData! as NSData, boundary: boundary) as Data
+            
+            
+            let task = URLSession.shared.dataTask(with: request as URLRequest) {
+                data, response, error in
+                
+                if error != nil {
+                    print("error=\(String(describing: error))")
+                    return
+                }
+                
+                print(response!)
+                
+                // Print out reponse body
+                let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print("****** response data = \(responseString!)")
+                
+                do {
+                    
+                    let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary
+                    
+                    print("  json  \(String(describing: json))")
+                    
+                    
+                }catch
+                {
+                    print(error)
+                }
+                
+            }
+            
+            task.resume()
+        }
+        
+        
+        func createBodyWithParameters(parameters: [String: String]?, filePathKey: String?, imageDataKey: NSData, boundary: String) -> NSData {
+            let body = NSMutableData();
+            
+            if parameters != nil {
+                for (key, value) in parameters! {
+                    body.appendString(string: "--\(boundary)\r\n")
+                    body.appendString(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+                    body.appendString(string: "\(value)\r\n")
+                }
+            }
+            
+            let filename = "user-profile.jpg"
+            let mimetype = "image/jpg"
+            
+            body.appendString(string: "--\(boundary)\r\n")
+            body.appendString(string: "Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"\(filename)\"\r\n")
+            body.appendString(string: "Content-Type: \(mimetype)\r\n\r\n")
+            body.append(imageDataKey as Data)
+            body.appendString(string: "\r\n")
+            
+            
+            
+            body.appendString(string: "--\(boundary)--\r\n")
+            
+            return body
+        }
+        
+        
+        
+        func generateBoundaryString() -> String {
+            return "Boundary-\(NSUUID().uuidString)"
+           
+        }
+        
+        
     }
+    
     
     
     func textfiled_validation(){
@@ -144,6 +230,8 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
             
             
         }
+        
+        print("all fields are field")
     
     }
     
@@ -220,12 +308,10 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
     }
     
     
-    override func viewDidLoad() {
+      override func viewDidLoad() {
         super.viewDidLoad()
 
-    
-        
-        
+
         // Do any additional setup after loading the view.
         self.myview.layer.cornerRadius = 20
         self.myview.layer.borderColor = UIColor.white.cgColor
@@ -261,7 +347,8 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
    
     animation()
     }
-    
+
+
     func animation()
     {
         self.myimageview.layer.transform = CATransform3DTranslate(CATransform3DIdentity, -200, 0, 0)
@@ -349,7 +436,7 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
         return true
     }
 
-    }
+}
 
 
 
@@ -383,16 +470,19 @@ extension RegistrationViewController{
         
         dismiss(animated: true, completion: nil)
     }
-    
 
-    
     
 }
 
 
 
-
-
+extension NSMutableData {
+    
+    func appendString(string: String) {
+        let data = string.data(using: String.Encoding.utf8, allowLossyConversion: true)
+        append(data!)
+    }
+}
 
 
 

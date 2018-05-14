@@ -61,10 +61,20 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
         
     }
     
+    func setupportraits(){
+       
+        
+
+        
+        
+    
+            }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupportraits()
+        
         // Do any additional setup after loading the view.
         
         self.myview.layer.cornerRadius = 20

@@ -8,9 +8,11 @@
 
 import UIKit
 
-class CameraVCViewController: UIViewController {
+class CameraVCViewController: UIViewController,UICollectionViewDataSource {
 
-   
+    @IBOutlet var myview: UIView!
+    @IBOutlet weak var collection: UICollectionView!
+   var imagestr = ["1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg","1.jpg"]
     override func viewDidLoad() {
    
         super.viewDidLoad()
@@ -18,5 +20,23 @@ class CameraVCViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-   
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imagestr.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mycell", for: indexPath) as! CollectionViewCell
+        cell.myimageview.image = UIImage(named: imagestr[indexPath.row])
+        
+        
+        return cell
+        
+        
+    }
+    
 }
+
