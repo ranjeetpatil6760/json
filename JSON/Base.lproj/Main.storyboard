@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1314" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dBx-kz-xkX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1314" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bsx-JY-RZ7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -145,7 +144,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="4.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xgt-if-ISh">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xgt-if-ISh">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -180,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N17-UA-M4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-281" y="-1222"/>
+            <point key="canvasLocation" x="335" y="-1306"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="N7z-J5-DgC">
@@ -325,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9L-52-5PY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2626" y="6"/>
+            <point key="canvasLocation" x="-2676" y="6"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="8OZ-x3-t1l">
@@ -550,7 +549,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHg-cs-lvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1970" y="6"/>
+            <point key="canvasLocation" x="-1820" y="6"/>
         </scene>
         <!--Item-->
         <scene sceneID="Sk3-D5-Ibf">
@@ -611,7 +610,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r8e-Wd-bG2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-578" y="-143"/>
+            <point key="canvasLocation" x="-335" y="-559"/>
         </scene>
         <!--Camera-->
         <scene sceneID="lvy-ls-tzy">
@@ -625,37 +624,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zKn-vY-raZ">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zKn-vY-raZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.70195079220000001" green="0.40121464839999998" blue="0.3566430424" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="0.0" id="AGP-Lb-Wb2">
-                                    <size key="itemSize" width="182" height="182"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
+                                <collectionViewLayout key="collectionViewLayout" id="N0v-Ns-l3P" customClass="PinterestLayout" customModule="JSON" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mycell" id="UGV-68-KkY" customClass="CollectionViewCell" customModule="JSON" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="182" height="182"/>
+                                        <rect key="frame" x="54" y="0.0" width="234" height="271"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="182" height="182"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="234" height="271"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NWz-Of-X7Q">
-                                                    <rect key="frame" x="0.0" y="0.0" width="182" height="182"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nnW-Z8-iOt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="234" height="271"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="271" id="4zk-T8-MOS"/>
+                                                        <constraint firstAttribute="width" constant="234" id="mpq-Af-zsI"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.70607947335025378" green="0.35993099758405395" blue="0.23546025969709999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="NWz-Of-X7Q" secondAttribute="bottom" id="GIA-Aj-RID"/>
-                                            <constraint firstItem="NWz-Of-X7Q" firstAttribute="leading" secondItem="UGV-68-KkY" secondAttribute="leading" id="RmF-EJ-OBh"/>
-                                            <constraint firstAttribute="trailing" secondItem="NWz-Of-X7Q" secondAttribute="trailing" id="Yf7-sU-Zjo"/>
-                                            <constraint firstItem="NWz-Of-X7Q" firstAttribute="top" secondItem="UGV-68-KkY" secondAttribute="top" id="cBX-8H-D3d"/>
+                                            <constraint firstItem="nnW-Z8-iOt" firstAttribute="centerX" secondItem="UGV-68-KkY" secondAttribute="centerX" id="QhT-hK-Eh5"/>
+                                            <constraint firstItem="nnW-Z8-iOt" firstAttribute="centerY" secondItem="UGV-68-KkY" secondAttribute="centerY" id="wZo-yP-RvE"/>
                                         </constraints>
+                                        <size key="customSize" width="234" height="271"/>
                                         <connections>
-                                            <outlet property="myimageview" destination="NWz-Of-X7Q" id="SQw-qZ-lMi"/>
+                                            <outlet property="myimageview" destination="nnW-Z8-iOt" id="hcG-2Y-547"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -665,12 +661,16 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.70195079221409373" green="0.40121464839378884" blue="0.35664304235073718" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="zKn-vY-raZ" secondAttribute="trailing" constant="-16" id="716-Ii-Cjh"/>
+                            <constraint firstItem="EaG-fh-U0Q" firstAttribute="top" secondItem="zKn-vY-raZ" secondAttribute="bottom" id="Od2-eA-cpR"/>
                             <constraint firstItem="zKn-vY-raZ" firstAttribute="width" secondItem="XIu-gc-9YI" secondAttribute="width" id="YLa-tZ-iAq"/>
                             <constraint firstItem="zKn-vY-raZ" firstAttribute="centerX" secondItem="XIu-gc-9YI" secondAttribute="centerX" id="ZbL-4L-kOK"/>
                             <constraint firstItem="zKn-vY-raZ" firstAttribute="height" secondItem="XIu-gc-9YI" secondAttribute="height" id="Zwz-TQ-PhO"/>
                             <constraint firstItem="zKn-vY-raZ" firstAttribute="centerY" secondItem="XIu-gc-9YI" secondAttribute="centerY" id="eR1-Rd-EOy"/>
+                            <constraint firstItem="zKn-vY-raZ" firstAttribute="top" secondItem="2g5-An-lCn" secondAttribute="bottom" constant="-64" id="et0-E4-2sH"/>
+                            <constraint firstItem="zKn-vY-raZ" firstAttribute="leading" secondItem="XIu-gc-9YI" secondAttribute="leadingMargin" constant="-16" id="maL-tb-eew"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RLn-WS-ipi"/>
@@ -681,11 +681,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2W-bB-DoZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="143" y="-143"/>
+            <point key="canvasLocation" x="378.39999999999998" y="-559.07046476761627"/>
         </scene>
     </scenes>
     <resources>
-        <image name="4.jpg" width="2400" height="1414"/>
         <image name="Camera_25.png" width="25" height="25"/>
         <image name="Home_25.png" width="25" height="25"/>
         <image name="Spotlist.png" width="335" height="310"/>

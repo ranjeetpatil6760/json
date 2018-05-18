@@ -31,28 +31,75 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
     
     @IBAction func signup(_ sender: UIButton) {
        
+        print("sign up")
          textfiled_validation()
-
-        let dateformatter = DateFormatter()
+        img()
+        // myImageUploadRequest()
         
-        dateformatter.dateStyle = DateFormatter.Style.short
+    }
+    
+    func img(){
+        let image = UIImage(named: "3.jpg")
+        let params: Parameters = ["fname": "abcd", "gender": "Male"]
+        Alamofire.upload(multipartFormData:
+            {
+                (multipartFormData) in
+                multipartFormData.append(UIImageJPEGRepresentation(image!, 0.1)!, withName: "iOSimage.jpeg", fileName: "file.jpeg", mimeType: "image/jpeg")
+                for (key, value) in params
+                {
+                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
+                }
+        }, to:url_string,headers:nil)
+        { (result) in
+            switch result {
+            case .success(let upload,_,_ ):
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                })
+                upload.responseJSON
+                    { response in
+                        //print response.result
+                        if response.result.value != nil
+                        {
+                            let dict :NSDictionary = response.result.value! as! NSDictionary
+                            let status = dict.value(forKey: "status")as! String
+                            if status=="1"
+                            {
+                                print("DATA UPLOAD SUCCESSFULLY")
+                            }
+                        }
+                }                
+            case .failure( _):
+                break
+            }   
+        }
         
-        dateformatter.timeStyle = DateFormatter.Style.short
         
-        let now = dateformatter.string(from: NSDate() as Date)
-
-        
-         let Parameters_code:Parameters = [ "fname":firstname.text!,
-                                        "lname":lastname.text!,
-                                        "email":email.text!,
-                                        "pass":password.text!,
-                                        "mobile":mobile.text!,
-                                     "rdate":now ]
-            
-        
-        
+    }
+    
+    
+    
         func myImageUploadRequest()
         {
+            
+            
+            let dateformatter = DateFormatter()
+            
+            dateformatter.dateStyle = DateFormatter.Style.short
+            
+            dateformatter.timeStyle = DateFormatter.Style.short
+            
+            let now = dateformatter.string(from: NSDate() as Date)
+            
+            
+            let para = [           "fname":firstname.text!,
+                                               "lname":lastname.text!,
+                                               "email":email.text!,
+                                               "pass":password.text!,
+                                               "mobile":mobile.text!,
+                                               "rdate":now ]
+
+            
             
             let myUrl = NSURL(string: "http://kolhapurtourism.co.in/ClassifiedApp/registration.php");
             
@@ -60,28 +107,18 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
             
             request.httpMethod = "POST";
             
-            
-            
-            let para = [
-                "fname"  : "mac mini",
-                "lname"    : "apple",
-                "email":"nishu3535@gmail.com",
-                "pass":"5544778",
-                "mobile":"9766360186",
-                "rdate":"14-5-2018",]
-            
             let boundary = generateBoundaryString()
             
             request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
             
-            let imagesctrl = UIImage(named: "3.jpg")
-            let imageData = UIImageJPEGRepresentation(imagesctrl!, 1)
-            
+            let imageData = UIImageJPEGRepresentation(myimageview.image!, 1)
+           // let imageStr = imageData?.base64EncodedString()
+
             if(imageData==nil)  { return }
             
             //        request.HTTPBody = createBodyWithParameters(parameters: para, filePathKey: "file", imageDataKey: imageData! as NSData, boundary: boundary)
             
-            request.httpBody = createBodyWithParameters(parameters: para, filePathKey: "File", imageDataKey: imageData! as NSData, boundary: boundary) as Data
+            request.httpBody = createBodyWithParameters(parameters: para, filePathKey: "myiosimages", imageDataKey: imageData! as NSData, boundary: boundary) as Data
             
             
             let task = URLSession.shared.dataTask(with: request as URLRequest) {
@@ -127,7 +164,7 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
                 }
             }
             
-            let filename = "user-profile.jpg"
+            let filename = "appleimages"
             let mimetype = "image/jpg"
             
             body.appendString(string: "--\(boundary)\r\n")
@@ -151,7 +188,7 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
         }
         
         
-    }
+    
     
     
     
@@ -310,6 +347,7 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
     
       override func viewDidLoad() {
         super.viewDidLoad()
+
 
 
         // Do any additional setup after loading the view.

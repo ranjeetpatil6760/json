@@ -12,10 +12,10 @@ class CollectionViewCell: UICollectionViewCell {
     
     
     @IBOutlet weak var myimageview: UIImageView!
-    
+    @IBOutlet weak var mylabel: UILabel!
     
     override func layoutSubviews() {
-        
+    
     }
     
 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Alamofire
 class Login_ViewController: UIViewController,UITextFieldDelegate {
 
    
@@ -22,6 +22,7 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func login(_ sender: Any) {
         
+    
          if self.email.text == "" && self.password.text == "" {
             
         let alert1 = UIAlertController(title: "Login", message: "Both fields is empty..!", preferredStyle: UIAlertControllerStyle.alert)
@@ -42,17 +43,62 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
             
             alert3.addAction(both)
                  present(alert3, animated: true, completion: nil)
+            } else if self.email.text != nil && self.password.text != nil{
+                
+                
+                print("check")
+               
             }
             
         }
         
         
-       
     
         
     }
     
-    
+    func loginfunction(){
+        
+        print("login start")
+        
+        let email = self.email.text!
+        let pass = self.password.text!
+        print("\(email) and  \(pass)")
+        
+        let config = URLSessionConfiguration.default
+        let userPasswordString = "\(email):\(pass)"
+        print(userPasswordString)
+        let userPasswordData = userPasswordString.data(using: String.Encoding.utf8)
+        let base64EncodedCredential = userPasswordData?.base64EncodedString()
+        let authString = "Basic \(String(describing: base64EncodedCredential))"
+        config.httpAdditionalHeaders = ["Authorization" : authString]
+        let session = URLSession(configuration: config)
+        
+        var running = false
+        let url = NSURL(string:"http://kolhapurtourism.co.in/ClassifiedApp/login.php")
+        
+        let task = session.dataTask(with: url! as URL) {
+            
+            ( data, response, error) in
+            if (response as? HTTPURLResponse) != nil {
+                let dataString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+                print(dataString!)
+                print(response!)
+                
+            }
+            running = false
+        }
+        
+        running = true
+        task.resume()
+        
+        while running {
+            print("waiting...")
+            sleep(1)
+        }
+
+        
+    }
     
     @IBAction func signup(_ sender: Any) {
         
@@ -61,15 +107,45 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-    func setupportraits(){
-       
-        
 
-        
-        
+    func setupportraits() {
     
+        
+      let urlstr = "http://kolhapurtourism.co.in/ClassifiedApp/login.php?uid=rohitpowar73@gmail.com&pass=123456"
+        
+        let url = URL(string: urlstr)
+        
+        let request = URLRequest(url: url!)
+        
+        let session = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            guard error != nil else {
+                
+                print(error?.localizedDescription)
+                return }
+            
+            
+            if let data = data{
+                
+                let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String:String]
+                print(response!)
+                print(json!)
             }
+            
+            
+            
+        }
+        session.resume()
+        
+        
+        
+        
+    }
     
+    
+
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -187,3 +263,6 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
     */
 
 }
+
+
+

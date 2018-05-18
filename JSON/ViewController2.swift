@@ -8,25 +8,34 @@
 
 import UIKit
 import Foundation
+import Alamofire
+//import SRWebClient
 class ViewController2: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     @IBOutlet weak var myImageView: UIImageView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        uploadImage()
+    
+    }
     
     @IBAction func uploadButtonTapped(sender: AnyObject) {
         
         print("upload")
+       uploadImage()
         
-        
-    }
+          }
     
     @IBAction func selectPhotoButtonTapped(sender: AnyObject) {
         
         print("select")
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self
+         myPickerController.allowsEditing = true
         myPickerController.sourceType = .photoLibrary
-        myPickerController.allowsEditing = true
+       
         
         self.present(myPickerController, animated: true, completion: nil)
         
@@ -42,23 +51,14 @@ class ViewController2: UIViewController,UIImagePickerControllerDelegate,UINaviga
         self.dismiss(animated: true, completion: nil)
         
     }
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    func uploadImage()
+    {
         
-          }
+       
+    }
 }
 
-    
-   
 
-
-
-    
-    
     
     
 
