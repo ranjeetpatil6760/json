@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JSON/RegistrationViewController.swift"
-            timestampString = "548232131.56335"
+            timestampString = "548407397.86283"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "362"
+            endingLineNumber = "362"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

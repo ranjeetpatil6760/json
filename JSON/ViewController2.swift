@@ -17,15 +17,16 @@ class ViewController2: UIViewController,UIImagePickerControllerDelegate,UINaviga
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        uploadImage()
+        loginfunction()
+
     
     }
     
     @IBAction func uploadButtonTapped(sender: AnyObject) {
         
         print("upload")
-       uploadImage()
-        
+        loginfunction()
+      
           }
     
     @IBAction func selectPhotoButtonTapped(sender: AnyObject) {
@@ -51,14 +52,20 @@ class ViewController2: UIViewController,UIImagePickerControllerDelegate,UINaviga
         self.dismiss(animated: true, completion: nil)
         
     }
-    func uploadImage()
-    {
-        
-       
-    }
+    func loginfunction(){
+        print("Start.....")
+        Alamofire.request("http://kolhapurtourism.co.in/ClassifiedApp/login.php?uid=rohitpowar73@gmail.com&pass=1234564").responseData { (resdata) in
+            
+            print(resdata.result.value!)
+            let res = resdata.result.value
+            
+            let pop = String(data: res!, encoding: String.Encoding.utf8)
+            print(pop!)
+            
+        }
 }
 
 
     
-    
+}
 

@@ -33,47 +33,8 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
        
         print("sign up")
          textfiled_validation()
-        img()
-        // myImageUploadRequest()
-        
-    }
-    
-    func img(){
-        let image = UIImage(named: "3.jpg")
-        let params: Parameters = ["fname": "abcd", "gender": "Male"]
-        Alamofire.upload(multipartFormData:
-            {
-                (multipartFormData) in
-                multipartFormData.append(UIImageJPEGRepresentation(image!, 0.1)!, withName: "iOSimage.jpeg", fileName: "file.jpeg", mimeType: "image/jpeg")
-                for (key, value) in params
-                {
-                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
-                }
-        }, to:url_string,headers:nil)
-        { (result) in
-            switch result {
-            case .success(let upload,_,_ ):
-                upload.uploadProgress(closure: { (progress) in
-                    //Print progress
-                })
-                upload.responseJSON
-                    { response in
-                        //print response.result
-                        if response.result.value != nil
-                        {
-                            let dict :NSDictionary = response.result.value! as! NSDictionary
-                            let status = dict.value(forKey: "status")as! String
-                            if status=="1"
-                            {
-                                print("DATA UPLOAD SUCCESSFULLY")
-                            }
-                        }
-                }                
-            case .failure( _):
-                break
-            }   
-        }
-        
+       
+         myImageUploadRequest()
         
     }
     
@@ -91,12 +52,21 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
             
             let now = dateformatter.string(from: NSDate() as Date)
             
+           
+            let imageDatas: Data = UIImageJPEGRepresentation(self.myimageview.image!, 0.9)!
+            let imageStr = imageDatas.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
             
-            let para = [           "fname":firstname.text!,
+            
+            
+            
+            
+            
+            let para = [                      "fname":firstname.text!,
                                                "lname":lastname.text!,
                                                "email":email.text!,
                                                "pass":password.text!,
                                                "mobile":mobile.text!,
+                                               "rimg":"myimage.jpg",
                                                "rdate":now ]
 
             
@@ -111,14 +81,15 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
             
             request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
             
-            let imageData = UIImageJPEGRepresentation(myimageview.image!, 1)
+            let imageData = UIImageJPEGRepresentation(myimageview.image!, 0.1)
+            print(imageData?.base64EncodedData() as Any)
            // let imageStr = imageData?.base64EncodedString()
 
             if(imageData==nil)  { return }
             
-            //        request.HTTPBody = createBodyWithParameters(parameters: para, filePathKey: "file", imageDataKey: imageData! as NSData, boundary: boundary)
+            //  user##      request.HTTPBody = createBodyWithParameters(parameters: para, filePathKey: "file", imageDataKey: imageData! as NSData, boundary: boundary)
             
-            request.httpBody = createBodyWithParameters(parameters: para, filePathKey: "myiosimages", imageDataKey: imageData! as NSData, boundary: boundary) as Data
+            request.httpBody = createBodyWithParameters(parameters: para as? [String : String], filePathKey: "myiosimages", imageDataKey: imageData! as NSData, boundary: boundary) as Data
             
             
             let task = URLSession.shared.dataTask(with: request as URLRequest) {
@@ -345,10 +316,62 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
     }
     
     
+    func imgs(){
+        
+        let parameters = ["uid":"rohitpowar73@gmail.com", "pass":"123456"]
+        
+             // Image to upload:
+             let imageToUploadURL = Bundle.main.url(forResource: "Spotlist", withExtension: "png")
+        
+             // Server address (replace this with the address of your own server):
+             let url = url_string
+        
+             // Use Alamofire to upload the image
+             Alamofire.upload(
+                     multipartFormData: { multipartFormData in
+                             // On the PHP side you can retrive the image using $_FILES["image"]["tmp_name"]
+                             multipartFormData.append(imageToUploadURL!, withName: "image")
+                             for (key, val) in parameters {
+                                     multipartFormData.append(val.data(using: String.Encoding.utf8)!, withName: key)
+                                 }
+                     },
+                    to: url,
+                     encodingCompletion: { encodingResult in
+                         switch encodingResult {
+                         case .success(let upload, _, _):
+                             upload.responseJSON { response in
+                                 if let jsonResponse = response.result.value as? [String: Any] {
+                                     print(jsonResponse)
+                                 }
+                             }
+                         case .failure(let encodingError):
+                             print(encodingError)
+                         }
+                 }
+                 )
+       
+    }
+
+        
+
+    
+    
+    
+    
       override func viewDidLoad() {
         super.viewDidLoad()
 
+        imgs()
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateStyle = DateFormatter.Style.short
+        
+        dateformatter.timeStyle = DateFormatter.Style.medium
+        dateformatter.dateFormat = "yy/mm/dd"
+        
+        let now = dateformatter.string(from: NSDate() as Date)
 
+        print(now)
 
         // Do any additional setup after loading the view.
         self.myview.layer.cornerRadius = 20

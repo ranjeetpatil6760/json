@@ -45,22 +45,44 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
                  present(alert3, animated: true, completion: nil)
             } else if self.email.text != nil && self.password.text != nil{
                 
-                
                 print("check")
+                loginfunction()
                 
-               
             }
+      }
+  
+    }
+    
+    
+    func loginfunction(){
+        print("Start.....")
+        Alamofire.request("http://kolhapurtourism.co.in/ClassifiedApp/login.php?uid=\(self.email.text!)&pass=\(self.password.text!)").responseData { (resdata) in
+            
+            print(resdata.result.value!)
+            let res = resdata.result.value
+            
+            let pop = String(data: res!, encoding: String.Encoding.utf8)
+            
+            if pop == "User#1"{
+             
+                let controller = UIAlertController(title: "Login", message: "Invalid username & password", preferredStyle: UIAlertControllerStyle.alert)
+                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                
+                controller.addAction(action)
+                self.present(controller, animated: true, completion: nil)
+                
+            }else{
+                
+                let controller = UIAlertController(title: "Login", message: "Valid username & password", preferredStyle: UIAlertControllerStyle.alert)
+                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                
+                controller.addAction(action)
+                self.present(controller, animated: true, completion: nil)
+                
             }
-        
-}
-    
-    
-    
-    
-    
-    
-    
-    
+        }
+  }
+  
     @IBAction func signup(_ sender: Any) {
         
                
@@ -68,15 +90,19 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-
-    
-
-
-
-    override func viewDidLoad() {
+    func encode(){
+        let image = UIImage(named: "1.jpg")
+        let imageData: Data = UIImageJPEGRepresentation(image!, 0.4)!
+        let imageStr = imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+        print(imageStr)
+        
+        
+        
+    }
+     override func viewDidLoad() {
         super.viewDidLoad()
 
-      
+      encode()
         
         // Do any additional setup after loading the view.
         
@@ -152,12 +178,10 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
                             })
                         })
                     })
-                                 }
+                }
             }
         }
-
-        
-    }
+ }
        func textFieldDidBeginEditing(_ textField: UITextField) {
     
         let scroll:CGPoint = CGPoint(x: 0, y: textField.frame.origin.y)
@@ -173,22 +197,6 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 
