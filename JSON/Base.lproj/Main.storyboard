@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1314" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6az-ua-Y8Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G1314" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="bsx-JY-RZ7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -126,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1681" y="-799"/>
+            <point key="canvasLocation" x="-2591" y="-976"/>
         </scene>
         <!--View Controller2-->
         <scene sceneID="v4O-mA-vHY">
@@ -215,7 +215,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qgU-3r-hLp">
                                         <rect key="frame" x="31" y="227" width="312" height="240"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YxQ-i0-2Xk">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="YxQ-i0-2Xk">
                                                 <rect key="frame" x="28" y="51" width="258" height="41"/>
                                                 <color key="backgroundColor" red="0.2940635264" green="0.2940635264" blue="0.2940635264" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -230,7 +230,7 @@
                                                     <outlet property="delegate" destination="bsx-JY-RZ7" id="hg7-Ym-hv3"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LMj-rP-ixi">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="LMj-rP-ixi">
                                                 <rect key="frame" x="28" y="122" width="258" height="41"/>
                                                 <color key="backgroundColor" red="0.2940635264257988" green="0.2940635264257988" blue="0.2940635264257988" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -278,7 +278,6 @@
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
                                             <action selector="signup:" destination="bsx-JY-RZ7" eventType="touchUpInside" id="uZM-2k-llR"/>
-                                            <segue destination="6az-ua-Y8Z" kind="show" id="jZ0-lj-hf4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -324,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9L-52-5PY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2676" y="6"/>
+            <point key="canvasLocation" x="-2697" y="116"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="8OZ-x3-t1l">
@@ -358,7 +357,7 @@
                                                     <action selector="signup:" destination="6az-ua-Y8Z" eventType="touchUpInside" id="ERD-cU-WCR"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Firstname" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="prZ-fQ-Dek">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Firstname" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="prZ-fQ-Dek">
                                                 <rect key="frame" x="16" y="83" width="303" height="41"/>
                                                 <color key="backgroundColor" red="0.39815900259211578" green="0.35156176982239912" blue="0.37258996103387704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -373,7 +372,7 @@
                                                     <outlet property="delegate" destination="6az-ua-Y8Z" id="xWz-oC-vq4"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lastname" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JqV-4r-l2I">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lastname" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="JqV-4r-l2I">
                                                 <rect key="frame" x="16" y="143" width="303" height="41"/>
                                                 <color key="backgroundColor" red="0.39815900259999998" green="0.35156176979999998" blue="0.37258996100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -388,7 +387,7 @@
                                                     <outlet property="delegate" destination="6az-ua-Y8Z" id="yIb-3s-nje"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cQE-4o-Lu6">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="cQE-4o-Lu6">
                                                 <rect key="frame" x="16" y="326" width="303" height="41"/>
                                                 <color key="backgroundColor" red="0.39815900259999998" green="0.35156176979999998" blue="0.37258996100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -403,7 +402,7 @@
                                                     <outlet property="delegate" destination="6az-ua-Y8Z" id="P86-V0-k4f"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="suL-ti-JgG">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="suL-ti-JgG">
                                                 <rect key="frame" x="16" y="264" width="303" height="41"/>
                                                 <color key="backgroundColor" red="0.39815900259999998" green="0.35156176979999998" blue="0.37258996100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -418,7 +417,7 @@
                                                     <outlet property="delegate" destination="6az-ua-Y8Z" id="T1r-pJ-b3H"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZj-jL-zhw">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="BZj-jL-zhw">
                                                 <rect key="frame" x="16" y="203" width="303" height="41"/>
                                                 <color key="backgroundColor" red="0.39815900259999998" green="0.35156176979999998" blue="0.37258996100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -549,7 +548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHg-cs-lvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1820" y="6"/>
+            <point key="canvasLocation" x="-1846" y="99"/>
         </scene>
         <!--Item-->
         <scene sceneID="Sk3-D5-Ibf">
@@ -572,7 +571,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CM4-tM-dib" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2297" y="-799"/>
+            <point key="canvasLocation" x="-3292" y="-976"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="BXq-sl-Dv5">
@@ -589,7 +588,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M0A-c8-AJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3358" y="-623"/>
+            <point key="canvasLocation" x="-3986" y="-976"/>
         </scene>
         <!--Camera-->
         <scene sceneID="yDO-T5-iko">

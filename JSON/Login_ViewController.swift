@@ -58,11 +58,11 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
         print("Start.....")
         Alamofire.request("http://kolhapurtourism.co.in/ClassifiedApp/login.php?uid=\(self.email.text!)&pass=\(self.password.text!)").responseData { (resdata) in
             
-            print(resdata.result.value!)
+            print(resdata.result.value as Any)
             let res = resdata.result.value
-            
+           
             let pop = String(data: res!, encoding: String.Encoding.utf8)
-            
+             print(pop!)
             if pop == "User#1"{
              
                 let controller = UIAlertController(title: "Login", message: "Invalid username & password", preferredStyle: UIAlertControllerStyle.alert)
@@ -78,38 +78,79 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
                 
                 controller.addAction(action)
                 self.present(controller, animated: true, completion: nil)
+                self.insertintofcm_did()
+
                 
             }
+            
+            
         }
   }
   
+    
+    func insertintofcm_did(){
+        
+        let mac = UIDevice.current.identifierForVendor?.uuidString
+        print(mac!)
+        let uuid = NSUUID().uuidString.lowercased()
+        
+        let params:Parameters = [ "email":self.email.text!,
+                                  "token":uuid,
+                                  "imei":mac!,
+                                  "email_status":"1",
+                                  "sound":"1"        ]
+        
+        
+        Alamofire.request("http://kolhapurtourism.co.in/ClassifiedApp/login.php", method: .post, parameters: params, encoding: URLEncoding.httpBody).responseJSON { response in
+            
+            if let data = response.data {
+                let json = String(data: data, encoding: String.Encoding.utf8)
+                print("Response: \(json as Any)")
+            }
+        }
+    }
     @IBAction func signup(_ sender: Any) {
         
-               
-        print("sign up")
         
-    }
-    
-    func encode(){
         let image = UIImage(named: "1.jpg")
-        let imageData: Data = UIImageJPEGRepresentation(image!, 0.4)!
-        let imageStr = imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-        print(imageStr)
+        let data = UIImageJPEGRepresentation(image!, 1.0)
+        let str = String(data: data!, encoding: String.Encoding.utf8)
+        let date = DateFormatter()
+        date.dateStyle = .medium
+        let pa:Parameters = ["fname":"ranjit",
+                            "lname":"khapare",
+                            "email":"ranjitkhapare45@yahoo.com",
+                            "pass":"456123",
+                            "mobile":"45454545",
+                            "rimg":str as Any,
+                            "rdate":date,
+                            "dob":"3-6-1994"]
         
+        Alamofire.request("http://kolhapurtourism.co.in/ClassifiedApp/registration.php", method: .post, parameters: pa, encoding: URLEncoding.httpBody).responseJSON { response in
+            
+            if let data = response.result.value {
+                let json = String(data: data as! Data, encoding: String.Encoding.utf8)
+                print("Response: \(json!)")
+            }
+        }
+        
+        print("sign up")
         
         
     }
      override func viewDidLoad() {
         super.viewDidLoad()
 
-      encode()
         
+            //encode()
+        // 90426811-9e7e-47e7-a1b8-b0e2690f5bc2
+        // 1b8d6629-0929-4a4d-8366-89e6ef366345
         // Do any additional setup after loading the view.
         
         self.myview.layer.cornerRadius = 20
         //textfields
-        self.email.layer.cornerRadius = 15
-        self.password.layer.cornerRadius = 15
+        self.email.layer.cornerRadius = 20
+        self.password.layer.cornerRadius = 20
         self.password.textColor = UIColor.white
         self.login.layer.borderWidth = 1.25
         self.signup.layer.borderWidth = 1.25
@@ -128,12 +169,12 @@ class Login_ViewController: UIViewController,UITextFieldDelegate {
         self.password.delegate = self
         
         
-        self.login.layer.cornerRadius = 15
-        self.login.layer.borderWidth = 1.25
+        self.login.layer.cornerRadius = 20
+        self.login.layer.borderWidth = 1.0
         self.login.layer.borderColor = UIColor.brown.cgColor
         
-        self.signup.layer.cornerRadius = 15
-        self.signup.layer.borderWidth = 1.25
+        self.signup.layer.cornerRadius = 20
+        self.signup.layer.borderWidth = 1.0
         self.signup.layer.borderColor = UIColor.brown.cgColor
       
         custom_animation()

@@ -57,10 +57,6 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
             let imageStr = imageDatas.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
             
             
-            
-            
-            
-            
             let para = [                      "fname":firstname.text!,
                                                "lname":lastname.text!,
                                                "email":email.text!,
@@ -318,7 +314,7 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
     
     func imgs(){
         
-        let parameters = ["uid":"rohitpowar73@gmail.com", "pass":"123456"]
+        let parameters = ["uid":"mac", "pass":"123456"]
         
              // Image to upload:
              let imageToUploadURL = Bundle.main.url(forResource: "Spotlist", withExtension: "png")
@@ -330,7 +326,7 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
              Alamofire.upload(
                      multipartFormData: { multipartFormData in
                              // On the PHP side you can retrive the image using $_FILES["image"]["tmp_name"]
-                             multipartFormData.append(imageToUploadURL!, withName: "image")
+                             multipartFormData.append(imageToUploadURL!, withName: "rimg")
                              for (key, val) in parameters {
                                      multipartFormData.append(val.data(using: String.Encoding.utf8)!, withName: key)
                                  }
@@ -361,7 +357,8 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
       override func viewDidLoad() {
         super.viewDidLoad()
 
-        imgs()
+        print(generateBoundaryString())
+        //imgs()
         let dateformatter = DateFormatter()
         
         dateformatter.dateStyle = DateFormatter.Style.short
@@ -377,17 +374,17 @@ class RegistrationViewController: UIViewController,UITextFieldDelegate,UIImagePi
         self.myview.layer.cornerRadius = 20
         self.myview.layer.borderColor = UIColor.white.cgColor
         self.myview.layer.borderWidth = 1.0
-        self.firstname.layer.cornerRadius = 15
-        self.lastname.layer.cornerRadius = 15
-        self.mobile.layer.cornerRadius = 15
-        self.password.layer.cornerRadius = 15
-        self.email.layer.cornerRadius = 15
-        self.signbtn.layer.cornerRadius = 15
-        self.signbtn.layer.borderWidth = 1.25
+        self.firstname.layer.cornerRadius = 20
+        self.lastname.layer.cornerRadius = 20
+        self.mobile.layer.cornerRadius = 20
+        self.password.layer.cornerRadius = 20
+        self.email.layer.cornerRadius = 20
+        self.signbtn.layer.cornerRadius = 20
+        self.signbtn.layer.borderWidth = 1.0
         self.signbtn.layer.borderColor = UIColor.brown.cgColor
         self.cancel.layer.borderColor = UIColor.brown.cgColor
-        self.cancel.layer.borderWidth = 1.25
-        self.cancel.layer.cornerRadius = 15
+        self.cancel.layer.borderWidth = 1.0
+        self.cancel.layer.cornerRadius = 20
 
         
         self.myimageview.layer.cornerRadius = self.myimageview.frame.size.width / 2
