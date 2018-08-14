@@ -10,3 +10,4 @@ target 'JSON' do
    pod 'Alamofire', '~> 4.7'
 
   end
+edited now
